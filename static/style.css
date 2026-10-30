@@ -1,0 +1,36 @@
+/* 디자인: 교범(야전교범) 문서. 쪽 번호·문서 분류·검열 도장 같은 군 문서 형식 */
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic:wght@400;700&family=Nanum+Gothic+Coding&display=swap");
+:root {
+  --paper: #e6e8dc; --ink: #22261b; --olive: #4b5320; --rule: #a7ad8f; --stamp: #a3271f; --sheet: #f2f3ec;
+  --display: "Do Hyeon", "Nanum Gothic", sans-serif; --body: "Nanum Gothic", sans-serif; --mono: "Nanum Gothic Coding", Consolas, monospace;
+}
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 3px double var(--ink); padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header a { font-family: var(--display); font-size: 22px; color: var(--ink); text-decoration: none; }
+header::after { content: "교육용 · 프로그래밍 교범 PY-101"; font-size: 12px; letter-spacing: .1em; color: var(--olive); align-self: center; }
+main { max-width: 720px; margin: 0 auto; padding: 28px 16px 64px; counter-reset: para; }
+h1 { font-family: var(--display); font-weight: 400; font-size: 34px; margin: 0 0 20px; text-wrap: balance; }
+h1::before { content: "제1장  "; color: var(--olive); }
+.topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 24px; }
+.topic { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dotted var(--rule); color: var(--ink); text-decoration: none; font-weight: 700; }
+.topic span { font-family: var(--mono); font-weight: 400; color: var(--olive); }
+.topic:hover, .topic:focus-visible { color: var(--stamp); outline: none; }
+.card { background: var(--sheet); border: 1px solid var(--rule); padding: 18px 20px; margin-bottom: 16px; counter-increment: para; }
+.tag { margin: 0; font-size: 12px; letter-spacing: .12em; color: var(--olive); }
+.tag::before { content: "1-" counter(para) "  "; font-family: var(--mono); color: var(--ink); }
+h2 { font-size: 17px; margin: 6px 0 10px; }
+pre { margin: 0 0 12px; padding: 12px 14px; background: var(--paper); border-left: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 14px; overflow-x: auto; }
+.card { counter-reset: opt; }
+.choice { display: flex; gap: 8px; align-items: baseline; padding: 4px 0; cursor: pointer; counter-increment: opt; }
+.choice::before { content: counter(opt, hangul) "."; font-weight: 700; color: var(--olive); width: 1.4em; }
+.choice input { accent-color: var(--olive); }
+button, .button { display: inline-block; margin-top: 12px; background: var(--olive); color: var(--sheet); border: 0; padding: 12px 26px; font-family: var(--display); font-size: 20px; text-decoration: none; cursor: pointer; }
+.ghost { background: transparent; color: var(--olive); border: 2px solid var(--olive); }
+.score { position: relative; background: var(--sheet); border: 1px solid var(--rule); padding: 20px; margin-bottom: 20px; }
+.score p { margin: 0; }
+.big { font-family: var(--display); font-size: 48px; }
+.score::after { content: "평가 완료"; position: absolute; right: 20px; top: 18px; transform: rotate(-8deg); border: 3px solid var(--stamp); color: var(--stamp); padding: 4px 10px; font-family: var(--display); font-size: 20px; opacity: .85; }
+.advice { margin-top: 10px !important; border-top: 1px dotted var(--rule); padding-top: 10px; }
+.wrong { border-color: var(--stamp); }
+.answer { color: var(--olive); font-weight: 700; }
+pre, .choice, .topic { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
