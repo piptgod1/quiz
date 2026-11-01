@@ -49,3 +49,14 @@ for q in wrong:
 3. Web 탭 → Add a new web app → Flask 선택.
 4. WSGI 설정 파일에서 `from app import app as application` 이 되도록 경로를 맞춥니다.
 5. Reload 후 `https://아이디.pythonanywhere.com` 주소로 휴대폰 어디서든 열립니다.
+
+## 창으로 뜨는 프로그램 (exe)
+`desktop_app.py`는 같은 `quiz.py`를 tkinter 창 화면으로 보여 주는 버전입니다. 디자인은 웹앱과 같은 교범 스타일입니다.
+```
+python desktop_app.py                                   # 바로 실행
+pip install pyinstaller
+pyinstaller --onefile --windowed desktop_app.py         # dist/desktop_app.exe 생성 (Windows에서)
+```
+- `--windowed`는 검은 콘솔 창 없이 프로그램 창만 띄우는 옵션입니다.
+- 처음 실행 시 Windows가 "알 수 없는 앱" 경고를 띄우면 추가 정보 → 실행.
+- 범위 밖으로 쓴 것: `tkinter`(창 만들기), `lambda`(버튼을 눌렀을 때 실행할 짧은 함수).
